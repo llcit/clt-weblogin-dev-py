@@ -38,7 +38,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # CAS
-    # 'django_cas.middleware.CASMiddleware', 
+    'django_cas.middleware.CASMiddleware', 
+    # 'django.middleware.doc.XViewMiddleware',
 )
 
 ROOT_URLCONF = 'webloginsite.urls'
