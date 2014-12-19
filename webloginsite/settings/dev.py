@@ -33,3 +33,5 @@ AUTHENTICATION_BACKENDS = (
     )
 
 CAS_SERVER_URL = 'https://cas-test.its.hawaii.edu/cas/'
+CAS_VERSION = '1'
+CAS_REDIRECT_URL = '/admin'
