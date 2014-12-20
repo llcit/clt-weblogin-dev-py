@@ -5,6 +5,11 @@
 	<title></title>
 </head>
 <body>
-You're logged in as {{ user }}
+
+{% if user %}
+	You're logged in as {{ user }} <a href="logout">logout</a>
+{$ else %}
+	<a href="accounts/login">uh login</a>
+{% endif %}
 </body>
 </html>
