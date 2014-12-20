@@ -30,9 +30,9 @@ INSTALLED_APPS += (
 AUTHENTICATION_BACKENDS = (
 		'django.contrib.auth.backends.ModelBackend',
         # 'django_cas_ng.backends.CASBackend',
-        'django_cas.backends.CASBackend',
+        # 'django_cas.backends.CASBackend',
     )
 
-CAS_SERVER_URL = 'https://cas-test.its.hawaii.edu/cas/'
-CAS_VERSION = '1'
-CAS_REDIRECT_URL = '/logindev'
+# CAS_SERVER_URL = 'https://cas-test.its.hawaii.edu/cas/'
+# CAS_VERSION = '1'
+# CAS_REDIRECT_URL = '/logindev'
