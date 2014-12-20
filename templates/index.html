@@ -8,6 +8,14 @@
 {% if user.is_authenticated %}
 	
 	<p>You're logged in as {{ user }} <a href="{% url 'logout' %}">logout</a></p>
+	<p>Session:<br>
+		<div>You are {{ request.session.attributes.eduPersonAffiliation }} </div>
+		<div>{% if 'staff' in request.session.attributes.eduPersonAffiliation %} Hi Dr.!{% endif %}</div>
+
+		{% for k, v in request.session.attributes.items %}
+			<div>{{ k }} : {{ v }}</div>
+		{% endfor %}
+	</p>
 	
 {% else %}
 	
