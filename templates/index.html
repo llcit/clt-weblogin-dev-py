@@ -6,9 +6,13 @@
 </head>
 <body>
 {% if user.is_authenticated %}
-	You're logged in as {{ user }} <a href="logout">logout</a>
+	
+	<p>You're logged in as {{ user }} <a href="{% url 'logout' %}">logout</a></p>
+	
 {% else %}
-	<a href="accounts/login">uh login</a>
+	
+	<p><a href="{% url 'login' %}">uh login</a></p>
+
 {% endif %}
 </body>
 </html>
