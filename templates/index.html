@@ -5,10 +5,9 @@
 	<title></title>
 </head>
 <body>
-
-{% if user %}
+{% if user.is_authenticated %}
 	You're logged in as {{ user }} <a href="logout">logout</a>
-{$ else %}
+{% else %}
 	<a href="accounts/login">uh login</a>
 {% endif %}
 </body>
