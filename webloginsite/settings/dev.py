@@ -45,7 +45,6 @@ AUTHENTICATION_BACKENDS = (
 )
 
 CAS_SERVER_URL = 'https://cas-test.its.hawaii.edu/cas/'
-CAS_VERSION = '2'
 CAS_VERSION = 'CAS_2_SAML_1_0'
 CAS_REDIRECT_URL = '/'
 

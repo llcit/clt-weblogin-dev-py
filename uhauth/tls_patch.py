@@ -1,5 +1,6 @@
 # tls_patch.py
 # patch to force TLSv1 protocol in python's ssl module
+# really only necessary on systems (e.g. mac os x dev machines with openssl < 1)
 import functools
 import ssl
 

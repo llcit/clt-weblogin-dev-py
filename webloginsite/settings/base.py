@@ -9,11 +9,9 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os, ssl
+import os
 from unipath import Path
 
-
-ssl.PROTOCOL_SSLv23 = ssl.PROTOCOL_TLSv1
 
 PROJECT_DIR = Path(__file__).ancestor(3) # Points to top level directory
 

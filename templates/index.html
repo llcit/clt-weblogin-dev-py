@@ -7,20 +7,21 @@
 <body>
 {% if user.is_authenticated %}
 	
-	<p>You're logged in as {{ user }} <a href="{% url 'logout' %}">logout</a></p>
-	<p>Session:<br>
-		<div>You are {{ request.session.attributes.eduPersonAffiliation }} </div>
+	<div>You're logged in as {{ user }} <a href="{% url 'logout' %}">logout</a></div>
+	<div>
 		<div>
-			{% if 'staff' in request.session.attributes.eduPersonAffiliation or 'faculty' in request.session.attributes.eduPersonAffiliation %} 
-				Hi Dr. {{ request.session.attributes.sn }}!
-
+			{% if 'faculty' in request.session.attributes.eduPersonAffiliation %} 
+				Hi Professor {{ request.session.attributes.sn }}.
 			{% endif %}
 		</div>
+		<div>
+			You are listed as: {% for i in request.session.attributes.eduPersonAffiliation %} {{ i }} {% endfor %} 
+		</div>
 
-		{{ request.session.attributes.givenName }}{{ request.session.attributes.sn|slice:":1" }}
-		{{user.last_login}}
+		<div>Nickname here: {{ user.first_name }} {{ user.last_name|slice:":1" }}</div>
 		
-	</p>
+		<div>Last login: {{user.last_login}}</div>
+	</div>
 	
 {% else %}
 	
