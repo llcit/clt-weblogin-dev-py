@@ -4,6 +4,9 @@
 
 from .base import *
 
+import uhauth.tls_patch
+
+
 # Secret key stored in environment variable not here.
 SECRET_KEY = os.environ['SECRET_KEY']
 
@@ -35,13 +38,15 @@ MIDDLEWARE_CLASSES += (
 
 AUTHENTICATION_BACKENDS = (
 		'django.contrib.auth.backends.ModelBackend',
-        #'django_cas_ng.backends.CASBackend',
+        # 'uhauth.backends.UHCASBackend',
         # 'django_cas.backends.CASBackend',
-        'uhauth.backends.UHCASBackend',
+        
+        'uhauth.backends.UHCASAttributesBackend',
 )
 
 CAS_SERVER_URL = 'https://cas-test.its.hawaii.edu/cas/'
-CAS_VERSION = '1'
+CAS_VERSION = '2'
+CAS_VERSION = 'CAS_2_SAML_1_0'
 CAS_REDIRECT_URL = '/'
 
 # END CAS #

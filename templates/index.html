@@ -10,11 +10,16 @@
 	<p>You're logged in as {{ user }} <a href="{% url 'logout' %}">logout</a></p>
 	<p>Session:<br>
 		<div>You are {{ request.session.attributes.eduPersonAffiliation }} </div>
-		<div>{% if 'staff' in request.session.attributes.eduPersonAffiliation %} Hi Dr.!{% endif %}</div>
+		<div>
+			{% if 'staff' in request.session.attributes.eduPersonAffiliation or 'faculty' in request.session.attributes.eduPersonAffiliation %} 
+				Hi Dr. {{ request.session.attributes.sn }}!
 
-		{% for k, v in request.session.attributes.items %}
-			<div>{{ k }} : {{ v }}</div>
-		{% endfor %}
+			{% endif %}
+		</div>
+
+		{{ request.session.attributes.givenName }}{{ request.session.attributes.sn|slice:":1" }}
+		{{user.last_login}}
+		
 	</p>
 	
 {% else %}

@@ -1,17 +1,20 @@
-# backends.py
+# uhauth/backends.py
 from django_cas.backends import CASBackend
+
 
 
 class UHCASBackend(CASBackend):
 	
 	"""CAS authentication backend with user data populated from UH LDAP"""
 	
-	def authenticate(self, ticket, service):
+	def authenticate(self, ticket, service, request):
 		"""
 		Authenticates CAS ticket and authenticates a user. No additional attributes other than username are returned.
 		Works with CAS_VERSION = '1' set in settings file.
 		"""
-		user = super(UHCASBackend, self).authenticate(ticket, service)
+		# ssl.PROTOCOL_TLSv1
+		print 'uhauth'
+		user = super(UHCASBackend, self).authenticate(ticket, service, request)
 		return user
 
 class UHCASAttributesBackend(CASBackend):
