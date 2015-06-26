@@ -10,22 +10,22 @@ from django_cas.backends import CASBackend
 
 
 class UHCASBackend(CASBackend):
-	
+
 	"""CAS authentication backend with user data populated from UH LDAP"""
-	
+
 	def authenticate(self, ticket, service, request):
 		"""
 		Authenticates CAS ticket and authenticates a user. No additional attributes other than username are returned.
 		Works with CAS_VERSION = '1' set in settings file.
 		"""
-		
+
 		user = super(UHCASBackend, self).authenticate(ticket, service, request)
 		return user
 
 class UHCASAttributesBackend(CASBackend):
-	
+
 	"""CAS authentication backend with user data populated from UH LDAP"""
-	
+
 	def authenticate(self, ticket, service, request):
 		"""
 		Authenticates CAS ticket and retrieves additional (exposed) user data.
@@ -33,15 +33,16 @@ class UHCASAttributesBackend(CASBackend):
 		"""
 
 		user= super(UHCASAttributesBackend, self).authenticate(ticket, service, request)
-		
+
 		user_attrs = request.session['attributes']
 		if not user.first_name:
 			user.first_name = user_attrs['givenName']
 		if not user.last_name:
 			user.last_name = user_attrs['sn']
 		user.save()
-		# Can use this if you need this logic.
-		# affiliation = attrs['eduPersonAffiliation']
-		
+		# Can use this if you need this logic. But you'll need check for exceptions as some accounts will not have affiliation key.
+		# affiliation = user_attrs['eduPersonAffiliation']
+
+
 		return user
 
