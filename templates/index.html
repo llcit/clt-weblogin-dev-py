@@ -5,6 +5,7 @@
 	<title></title>
 </head>
 <body>
+    <h2>This page is used to test/debug CAS authentication at UH. It doesn't do much other than allow developers a way to test login/logout behavior.</h2>
 {% if user.is_authenticated %}
 
 	<div>You're logged in as {{ user }} <a href="{% url 'logout' %}">logout</a></div>
