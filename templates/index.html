@@ -6,25 +6,25 @@
 </head>
 <body>
 {% if user.is_authenticated %}
-	
+
 	<div>You're logged in as {{ user }} <a href="{% url 'logout' %}">logout</a></div>
 	<div>
 		<div>
-			{% if 'faculty' in request.session.attributes.eduPersonAffiliation %} 
+			{% if 'faculty' in request.session.attributes.eduPersonAffiliation %}
 				Hi Professor {{ request.session.attributes.sn }}.
 			{% endif %}
 		</div>
 		<div>
-			You are listed as: {% for i in request.session.attributes.eduPersonAffiliation %} {{ i }} {% endfor %} 
+			You are listed as:  {{ request.session.attributes.eduPersonAffiliation }}
 		</div>
 
 		<div>Nickname here: {{ user.first_name }} {{ user.last_name|slice:":1" }}</div>
-		
+
 		<div>Last login: {{user.last_login}}</div>
 	</div>
-	
+
 {% else %}
-	
+
 	<p><a href="{% url 'login' %}">uh login</a></p>
 
 {% endif %}

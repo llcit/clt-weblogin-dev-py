@@ -10,9 +10,9 @@ urlpatterns = patterns('',
 
 # 	url(r'^accounts/login/$', 'django.contrib.auth.views.login', name='login'),
 # 	url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
-	
-	url(r'^accounts/login$', 'django_cas.views.login', name='login'),
-    url(r'^logout$', 'django_cas.views.logout', name='logout'),
-    
+
+	url(r'^accounts/login/$', 'django_cas.views.login', name='login'),
+    url(r'^logout/$', 'django_cas.views.logout', name='logout'),
+
     url(r'^admin/', include(admin.site.urls)),
 )
